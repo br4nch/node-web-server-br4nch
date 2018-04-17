@@ -20,10 +20,10 @@ app.use((req, res, next) => {
     });
     next();
 });
-
-app.use((req, res, next) => {
+//for maintanance
+/* app.use((req, res, next) => {
     res.render('maintenance.hbs');
-});
+}); */
 
 app.use(express.static(__dirname + '/public'));
 
@@ -37,7 +37,6 @@ hbs.registerHelper('screamIt', (text) => {
 
 app.disable('etag');
 app.get('/', (req, res) => {
-    // res.status(200).send('<h1>Hello Express!</h1>');
     res.render('home.hbs', {
         pageTitle: 'Home Page',
         welcomeMessage: 'Welcome to my website'
@@ -48,6 +47,12 @@ app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About page'
     })
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects'
+    });
 });
 
 app.get('/bad', (req, res) => {
